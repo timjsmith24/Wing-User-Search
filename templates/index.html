@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block app_navbar %}
+
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul><font color='red'>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </font></ul>
+        {% endif %}
+    {% endwith %}
+  </div>
+</nav>
+{% endblock %}
+
+{% block app_content %}
+<div class='container'>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.site.label }}<br>
+            {{ form.site(size=32) }}
+        </p>
+        <p>
+            {{ form.user.label }}<br>
+            {{ form.user(size=32 )}}
+        </p>
+        <p><button type="submit" class="btn btn-primary">Search</button></p>
+    </form>
+</div>
+{% endblock %}

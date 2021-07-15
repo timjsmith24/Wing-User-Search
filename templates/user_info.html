@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block app_navbar %}
+
+<div class="row">
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="{{ url_for('index') }}">Search New User</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block app_content %}
+{% block wlc_content %}
+<div class='table table-responsive table-border'>
+    <div class='container-fluid'>
+        <h1>Location {{ site }}</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <table id="wlc_table" class="table" width="100%">
+              <thead>
+                <tr bgcolor="lightgrey">
+                    <td>User</td>
+                    <td>IP Address</td>
+                    <td>MAC Address</td>
+                    <td>Access Point</td>
+                    <td>AP MAC</td>
+                </tr>
+              </thead>
+              <tbody>   
+                  <tr>
+                      <td>{{ user }}</td>
+                      <td>{{ user_ip }}</td>
+                      <td>{{ user_mac }}</td>
+                      <td>{{ ap_name }}</td>
+                      <td>{{ ap_mac }}</td>
+                  </tr> 
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+  </div>            
+
+{% endblock %}
+{% endblock %}
