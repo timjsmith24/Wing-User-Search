@@ -4,20 +4,17 @@ import json
 import warnings
 import os
 import logging
-from requests.api import get
-from requests.exceptions import HTTPError
-from pprint import pprint
 
 warnings.filterwarnings("ignore")
 
-
-wlc = "10.0.20.4"
-login = {"user":"admin","password":"c0bra42b"}
+#Wing Controller info
+wlc = "<IP ADDRESS OR DNS NAME>"
+login = {"user":"<NAME>","password":"<PASSWORD>"}
 
 # rf-domain name or device name
-rf_domain = 'SC-Lab'
+rf_domain = '<RF-DOMAIN>'
 #user to search
-username ='tsmith24'
+username ='<USER NAME>'
 
 
 baseurl = 'https://{}/rest'.format(wlc)
@@ -96,17 +93,6 @@ def post_api_call(url, rf_domain=None, device=None):
         logging.error(log_msg)
         raise TypeError("{}".format(data['errors']))
 
-#def getRfDomainList():
-#    global HEADERS
-#    auth_token = get_api_token()
-#    HEADERS['cookie']='auth_token={}'.format(auth_token)
-#    sites = []
-#    url = '/v1/stats/noc/domains'
-#    rawList = post_api_call(url)
-#    for domain in rawList:
-#        sites.append(domain['name'])
-#    return sites
-
 
 
 def clientSearch(rf_domain,username):
@@ -146,7 +132,8 @@ def main():
     except:
         print('Unknown')
         exit()
-    print(f"user {username} found on AP {data['apname']}")
+    print("{:^24}{:^24}{:^24}{:^24}{:^24}{:^24}".format('User','SSID','IP Address','MAC Address','Access Point','AP MAC'))
+    print("{:^24}{:^24}{:^24}{:^24}{:^24}{:^24}".format(username,data['wlan'],data['ipaddr'],data['mac'],data['apname'],data['apmac']))
 
     close_api_session()
 

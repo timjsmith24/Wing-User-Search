@@ -41,6 +41,7 @@ def user(site, user):
         return render_template("user_info.html",
         site = site,
         user = user,
+        ssid = ap_data['wlan'],
         user_ip = ap_data['ipaddr'],
         user_mac = ap_data['mac'],
         ap_name = ap_data['apname'],
