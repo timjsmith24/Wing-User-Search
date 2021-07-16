@@ -34,7 +34,7 @@ Using flask, this will give a web interface, allowing rf-domain and user names t
 
 ### User Output
 <p align="center">
-<img src="../master/images/user_location_output.png" alt="User Location Output" height="100px">
+<img src="../master/images/user_location_output.png" alt="User Location Output" height="125px">
 </p>
 
 ### Requirements
