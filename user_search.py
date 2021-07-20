@@ -38,7 +38,17 @@ def get_api_token():
     url = '{}/v1/act/login'.format(baseurl)
     try:
         r = requests.get(url, headers=HEADERS, verify=False, auth=(login['user'], login['password']), timeout=3)
+    except requests.ConnectionError as e:
+        logging.error(f"Connection Error - {e}")
+        raise TypeError("connection error")
+    except requests.exceptions.HTTPError as e:
+        logging.error(f"HTTP Error - {e}")
+        raise TypeError("API call failed with HTTP Error")
+    except requests.exceptions.Timeout:
+        logging.error("API call timeout")
+        raise TypeError("API call timeout")
     except:
+        logging.error(f"API request failed for {url}")
         raise TypeError("API request failed")
     data = json.loads(r.text)
     auth_token = data['data']['auth_token']
@@ -48,7 +58,17 @@ def close_api_session():
     url = '{}/v1/act/logout'.format(baseurl)
     try:
         r = requests.post(url, headers=HEADERS, verify=False, timeout=3)
+    except requests.ConnectionError as e:
+        logging.error(f"Connection Error - {e}")
+        raise TypeError("connection error")
+    except requests.exceptions.HTTPError as e:
+        logging.error(f"HTTP Error - {e}")
+        raise TypeError("API call failed with HTTP Error")
+    except requests.exceptions.Timeout:
+        logging.error("API call timeout")
+        raise TypeError("API call timeout")
     except:
+        logging.error(f"API request failed for {url}")
         raise TypeError("API request failed")
     try:
         data = json.loads(r.text)
@@ -75,6 +95,15 @@ def post_api_call(url, rf_domain=None, device=None):
         payload = {}
     try:
         r = requests.post(url, headers=HEADERS, data=payload, verify=False, timeout=3)
+    except requests.ConnectionError as e:
+        logging.error(f"Connection Error - {e}")
+        raise TypeError("connection error")
+    except requests.exceptions.HTTPError as e:
+        logging.error(f"HTTP Error - {e}")
+        raise TypeError("API call failed with HTTP Error")
+    except requests.exceptions.Timeout:
+        logging.error("API call timeout")
+        raise TypeError("API call timeout")
     except:
         log_msg = "API request {} failed for site {}".format(url, rf_domain)
         logging.error(log_msg)
