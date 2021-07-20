@@ -1,7 +1,7 @@
 # WiNG User Search 
 ## user_search.py
 ### Purpose
-Once filling out the WiNG controller information and entering a rf-domain and a eap username, the script will make an API call to the WiNG controller collecting all clients for the entered rf-domain. Then search through all clients to find a client that matches the entered username. Once found, the users mac address, ip address, ssid, connected ap and the connected ap mac address are collected and printed on screen.
+Once filling out the WiNG controller information and entering the eap username and rf-domain to search, the script will make an API call to the WiNG controller collecting all clients for the entered rf-domain. Then search through all clients to find a client that matches the entered username. Once found, the users mac address, ip address, ssid, connected ap and the connected ap mac address are collected and printed on screen.
 
 ### User Input Data
 ###### lines 10-17
@@ -34,7 +34,7 @@ Using flask, this will give a web interface, allowing rf-domain and user names t
 
 ### User Output
 <p align="center">
-<img src="../master/images/user_location_output.png" alt="User Location Output" height="400px">
+<img src="../master/images/user_location_output.png" alt="User Location Output">
 </p>
 
 ### Requirements
